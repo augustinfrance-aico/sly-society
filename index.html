@@ -413,7 +413,7 @@ img, video { display: block; max-width: 100%; }
 
 .hero__video-card {
   width: 100%;
-  max-width: 80%;
+  max-width: 60%;
   border-radius: var(--r4);
   overflow: hidden;
   box-shadow: var(--shadow-video);
@@ -1529,169 +1529,6 @@ img, video { display: block; max-width: 100%; }
 }
 
 /* ═══════════════════════════════════════════
-   CINEMATIC INTRO OVERLAY
-   ═══════════════════════════════════════════ */
-.cinematic-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.cinematic-overlay.fade-out {
-  animation: cinematicFadeOut 1.2s cubic-bezier(0.4, 0, 0, 1) forwards;
-}
-
-@keyframes cinematicFadeOut {
-  0% { opacity: 1; transform: scale(1); }
-  60% { opacity: 1; transform: scale(1.05); }
-  100% { opacity: 0; transform: scale(1.15); pointer-events: none; }
-}
-
-.cinematic-logo {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  opacity: 0;
-  transform: scale(0.8);
-  animation: logoReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-}
-
-.cinematic-logo span {
-  color: var(--blue);
-}
-
-@keyframes logoReveal {
-  0% { opacity: 0; transform: scale(0.8) translateY(20px); filter: blur(10px); }
-  100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
-}
-
-.cinematic-subtitle {
-  font-family: var(--font-mono);
-  font-size: clamp(0.7rem, 2vw, 0.9rem);
-  color: var(--text-tertiary);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0;
-  animation: subReveal 0.8s ease 1s forwards;
-}
-
-@keyframes subReveal {
-  0% { opacity: 0; transform: translateY(10px); letter-spacing: 0.6em; }
-  100% { opacity: 1; transform: translateY(0); letter-spacing: 0.3em; }
-}
-
-.cinematic-line {
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--blue), var(--violet), var(--cyan));
-  margin-top: 16px;
-  border-radius: 2px;
-  animation: lineGrow 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
-}
-
-@keyframes lineGrow {
-  0% { width: 0; }
-  100% { width: min(280px, 60vw); }
-}
-
-/* Orbiting planets in intro */
-.cinematic-orbit {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  border: 1px solid rgba(31,111,255,0.06);
-  animation: orbitSpin 8s linear infinite;
-}
-
-.cinematic-orbit:nth-child(2) {
-  width: 450px;
-  height: 450px;
-  border-color: rgba(122,60,255,0.04);
-  animation-duration: 12s;
-  animation-direction: reverse;
-}
-
-.cinematic-orbit:nth-child(3) {
-  width: 600px;
-  height: 600px;
-  border-color: rgba(0,229,255,0.03);
-  animation-duration: 16s;
-}
-
-@keyframes orbitSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.cinematic-orbit-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  top: -4px;
-  left: 50%;
-  margin-left: -4px;
-}
-
-.cinematic-orbit:nth-child(1) .cinematic-orbit-dot {
-  background: radial-gradient(circle at 30% 30%, #FC6464, #DC2626);
-  box-shadow: 0 0 12px rgba(220,38,38,0.4);
-}
-
-.cinematic-orbit:nth-child(2) .cinematic-orbit-dot {
-  background: radial-gradient(circle at 30% 30%, #78AAFF, #1F6FFF);
-  box-shadow: 0 0 12px rgba(31,111,255,0.4);
-  width: 10px; height: 10px; top: -5px; margin-left: -5px;
-}
-
-.cinematic-orbit:nth-child(3) .cinematic-orbit-dot {
-  background: radial-gradient(circle at 30% 30%, #555, #191923);
-  box-shadow: 0 0 12px rgba(25,25,35,0.3);
-  width: 6px; height: 6px; top: -3px; margin-left: -3px;
-}
-
-/* Particle burst at transition */
-.cinematic-particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.cinematic-particle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0;
-}
-
-.cinematic-overlay.fade-out .cinematic-particle {
-  animation: particleBurst 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes particleBurst {
-  0% { opacity: 0.8; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
-}
-
-/* Loading counter */
-.cinematic-counter {
-  position: absolute;
-  bottom: 10%;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-tertiary);
-  letter-spacing: 0.15em;
-}
-
-/* ═══════════════════════════════════════════
    ENHANCED ANIMATIONS
    ═══════════════════════════════════════════ */
 
@@ -1783,34 +1620,11 @@ img, video { display: block; max-width: 100%; }
   .skill-bar-mini__fill::after { animation: none; display: none; }
   .section__label::before { animation: none; }
   .mouse-glow { display: none; }
-  .cinematic-overlay { display: none; }
   .hero__video-card { animation: none; }
-  .cinematic-orbit { animation: none; }
 }
 </style>
 </head>
 <body>
-
-<!-- ═══════════════════════════════════════════
-     CINEMATIC INTRO
-     ═══════════════════════════════════════════ -->
-<div class="cinematic-overlay" id="cinematicOverlay">
-  <!-- Orbiting rings with colored planet dots -->
-  <div class="cinematic-orbit"><div class="cinematic-orbit-dot"></div></div>
-  <div class="cinematic-orbit"><div class="cinematic-orbit-dot"></div></div>
-  <div class="cinematic-orbit"><div class="cinematic-orbit-dot"></div></div>
-
-  <!-- Logo + subtitle -->
-  <div class="cinematic-logo"><span>Sly</span> Society</div>
-  <div class="cinematic-subtitle">Autonomous Agent Ecosystem</div>
-  <div class="cinematic-line"></div>
-
-  <!-- Loading counter -->
-  <div class="cinematic-counter" id="cinematicCounter">Initializing agents... 0%</div>
-
-  <!-- Particle burst container (filled by JS) -->
-  <div class="cinematic-particles" id="cinematicParticles"></div>
-</div>
 
 <!-- Scroll progress bar -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -2917,67 +2731,6 @@ img, video { display: block; max-width: 100%; }
         card.style.transform = '';
       });
     });
-  }
-
-  /* ── Cinematic Intro ── */
-  var overlay = document.getElementById('cinematicOverlay');
-  var counter = document.getElementById('cinematicCounter');
-  var particles = document.getElementById('cinematicParticles');
-
-  if (overlay && !prefersReducedMotion) {
-    // Lock scroll during intro
-    document.body.style.overflow = 'hidden';
-
-    // Animated counter 0% → 100%
-    var progress = 0;
-    var messages = [
-      'Initializing agents...',
-      'Loading 65 agents...',
-      'Connecting neural network...',
-      'Calibrating SENTINEL...',
-      'Syncing Cooper Building...',
-      'Deploying Sly Society...'
-    ];
-
-    var counterInterval = setInterval(function() {
-      progress += Math.floor(Math.random() * 4) + 1;
-      if (progress > 100) progress = 100;
-      var msgIdx = Math.min(Math.floor(progress / 18), messages.length - 1);
-      counter.textContent = messages[msgIdx] + ' ' + progress + '%';
-
-      if (progress >= 100) {
-        clearInterval(counterInterval);
-        counter.textContent = 'Ready.';
-
-        // Generate burst particles
-        var colors = ['#DC2626', '#1F6FFF', '#191923', '#7A3CFF', '#00E5FF', '#1EFF8E'];
-        for (var i = 0; i < 40; i++) {
-          var dot = document.createElement('div');
-          dot.className = 'cinematic-particle';
-          var size = 4 + Math.random() * 8;
-          var angle = (Math.PI * 2 * i) / 40;
-          var dist = 200 + Math.random() * 400;
-          dot.style.cssText = 'width:' + size + 'px;height:' + size + 'px;' +
-            'background:' + colors[i % colors.length] + ';' +
-            'left:50%;top:50%;margin-left:-' + (size/2) + 'px;margin-top:-' + (size/2) + 'px;' +
-            '--tx:' + Math.cos(angle) * dist + 'px;' +
-            '--ty:' + Math.sin(angle) * dist + 'px;' +
-            'animation-delay:' + (Math.random() * 0.3) + 's;';
-          particles.appendChild(dot);
-        }
-
-        // Trigger exit
-        setTimeout(function() {
-          overlay.classList.add('fade-out');
-          document.body.style.overflow = '';
-          setTimeout(function() {
-            overlay.style.display = 'none';
-          }, 1300);
-        }, 400);
-      }
-    }, 60);
-  } else if (overlay) {
-    overlay.style.display = 'none';
   }
 
   /* ── Enhanced Section Reveal Observer ── */
