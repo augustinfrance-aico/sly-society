@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier Création d'Entreprise — Augustin Diaz | France Travail</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #FAFAFA;
+    --card: #FFFFFF;
+    --text: #1A1A2E;
+    --text-secondary: #555;
+    --accent: #1F6FFF;
+    --accent-dark: #0D4FCC;
+    --border: #E5E7EB;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --section-bg: #F3F6FC;
+    --highlight: #EEF2FF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* HERO VIDEO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.35);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1A1A2E;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 20px rgba(255,255,255,0.6);
+  }
+  .hero-content .subtitle {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 400;
+    margin-bottom: 24px;
+    text-shadow: 0 1px 10px rgba(255,255,255,0.8);
+  }
+  .hero-content .badge {
+    display: inline-block;
+    background: rgba(26,26,46,0.85);
+    color: white;
+    padding: 8px 24px;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: #1A1A2E;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll span {
+    display: block;
+    font-size: 1.4rem;
+    margin-top: 4px;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: rgba(31,111,255,0.25);
+    border: 1px solid rgba(31,111,255,0.4);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  /* NAV TOC */
+  .toc {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .toc-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .toc a {
+    text-decoration: none;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 6px;
+    background: var(--highlight);
+    transition: all 0.2s;
+  }
+  .toc a:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* MAIN */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 48px;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .num {
+    background: var(--accent);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .section-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    padding-left: 42px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s;
+  }
+  .card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .card p, .card li {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+  }
+  .card ul {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+  .card li {
+    margin-bottom: 4px;
+  }
+
+  /* HIGHLIGHT CARD */
+  .card-highlight {
+    border-left: 4px solid var(--accent);
+    background: var(--highlight);
+  }
+
+  /* GRID */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+  .stat-card .label {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  th {
+    background: var(--section-bg);
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  tr:hover td {
+    background: var(--highlight);
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--highlight);
+    color: var(--accent);
+    margin: 2px;
+  }
+  .tag-green { background: #D1FAE5; color: #065F46; }
+  .tag-orange { background: #FEF3C7; color: #92400E; }
+  .tag-purple { background: #EDE9FE; color: #5B21B6; }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--card);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .timeline-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .timeline-content {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* APP CARD */
+  .app-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .app-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    color: white;
+  }
+  .app-info { flex: 1; }
+  .app-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .app-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .app-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #1A1A2E;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 40px;
+    font-size: 0.85rem;
+  }
+  .footer strong {
+    color: white;
+  }
+
+  /* QUOTE */
+  .quote {
+    background: var(--highlight);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin: 24px 0;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  /* PRINT */
+  @media print {
+    .toc { position: static; }
+    .header { padding: 30px 20px; }
+    .card:hover { box-shadow: none; }
+    body { font-size: 12px; }
+  }
+
+  @media (max-width: 768px) {
+    .header { padding: 40px 20px; }
+    .header h1 { font-size: 1.6rem; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .toc { padding: 12px 16px; }
+    .container { padding: 24px 16px; }
+    .app-card { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO VIDEO PLEIN ÉCRAN -->
+<div class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="media/hero_france_travail.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Dossier de Création d'Entreprise</h1>
+    <p class="subtitle">Prestations de services en Intelligence Artificielle & Automatisation</p>
+    <span class="badge">Augustin Diaz — Mars 2026</span>
+  </div>
+  <div class="hero-scroll">Défiler pour découvrir<span>↓</span></div>
+</div>
+
+<!-- IDENTITÉ -->
+<div style="background:#1A1A2E; color:white; padding:40px; text-align:center;">
+  <div style="max-width:700px; margin:0 auto;">
+    <div style="width:90px; height:90px; border-radius:50%; background:linear-gradient(135deg, #1F6FFF, #7A3CFF); margin:0 auto 16px; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:800; color:white;">AD</div>
+    <h2 style="font-size:1.6rem; font-weight:700; margin-bottom:4px;">Augustin Diaz</h2>
+    <p style="opacity:0.7; font-size:0.95rem; margin-bottom:16px;">Entrepreneur — Intelligence Artificielle & Automatisation</p>
+    <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; font-size:0.82rem; opacity:0.6;">
+      <span>Créateur du système Cooper Building (65 agents IA)</span>
+      <span>·</span>
+      <span>Profil commercial + technique</span>
+    </div>
+  </div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#genese">Genèse du projet</a>
+    <a href="#formation">Formations & Compétences</a>
+    <a href="#applications">10 Applications développées</a>
+    <a href="#clients">Clients & Missions</a>
+    <a href="#crm">CRM & Automatisations</a>
+    <a href="#upwork">Prospection Upwork</a>
+    <a href="#business-plan">Business Plan</a>
+    <a href="#rythme">Rythme de travail</a>
+    <a href="#vision">Vision & Objectifs</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- CHIFFRES CLÉS -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="value">10+</div>
+      <div class="label">Applications développées</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">9</div>
+      <div class="label">Clients accompagnés</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">65</div>
+      <div class="label">Agents IA créés</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">90+</div>
+      <div class="label">Modules logiciels</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">10-12h</div>
+      <div class="label">Travail quotidien</div>
+    </div>
+  </div>
+
+  <!-- 1. GENÈSE -->
+  <section class="section" id="genese">
+    <h2 class="section-title"><span class="num">1</span> Genèse du projet</h2>
+    <p class="section-desc">Pourquoi l'Intelligence Artificielle, et pourquoi maintenant.</p>
+
+    <div class="card card-highlight">
+      <h3>Le constat de départ</h3>
+      <p>Fort de plusieurs années d'expérience dans le domaine <strong>commercial et la relation client</strong>, j'ai identifié fin 2025 une opportunité majeure : l'Intelligence Artificielle transforme radicalement la façon dont les entreprises fonctionnent, communiquent et vendent. Les PME et indépendants ont un besoin croissant d'automatiser leurs processus, mais manquent de compétences techniques pour le faire.</p>
+      <br>
+      <p>J'ai décidé d'<strong>allier mes compétences commerciales</strong> — prospection, négociation, compréhension des besoins clients, communication — <strong>avec une montée en compétence technique intensive</strong> sur les outils d'IA et d'automatisation. Cette combinaison rare (commercial + tech IA) me positionne idéalement pour :</p>
+      <ul>
+        <li><strong>Comprendre les besoins métier</strong> des clients (grâce à mon expérience commerciale)</li>
+        <li><strong>Concevoir et déployer les solutions techniques</strong> (grâce à ma formation en IA)</li>
+        <li><strong>Communiquer et vendre efficacement</strong> ces solutions (grâce à mon profil hybride)</li>
+      </ul>
+    </div>
+
+    <div class="quote">
+      « L'IA n'est pas un gadget technologique, c'est un levier de productivité concret pour les entreprises. Mon rôle est de le rendre accessible à ceux qui en ont le plus besoin : les PME, artisans et indépendants. »
+    </div>
+
+    <div class="card">
+      <h3>Pourquoi cette voie est pertinente</h3>
+      <ul>
+        <li><strong>Marché en explosion</strong> : la demande en automatisation IA a augmenté de +178% en 2025-2026 sur les plateformes de freelance (source : Upwork Talent Market Reports)</li>
+        <li><strong>Profil rare</strong> : la majorité des développeurs IA n'ont pas de compétences commerciales. La majorité des commerciaux ne maîtrisent pas l'IA. Mon positionnement hybride répond à un besoin non couvert</li>
+        <li><strong>Coût de lancement quasi nul</strong> : les outils IA modernes (Claude, Groq, Gemini, n8n) offrent des versions gratuites suffisantes pour démarrer sans investissement initial</li>
+        <li><strong>Scalabilité</strong> : contrairement à un emploi salarié, chaque outil, workflow et template créé peut être revendu à l'infini</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. FORMATIONS -->
+  <section class="section" id="formation">
+    <h2 class="section-title"><span class="num">2</span> Formations & Compétences acquises</h2>
+    <p class="section-desc">Auto-formation intensive quotidienne depuis fin 2025, 10 à 12 heures par jour.</p>
+
+    <div class="card">
+      <h3>Langages de programmation & développement</h3>
+      <table>
+        <thead>
+          <tr><th>Technologie</th><th>Usage concret</th><th>Niveau</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Python 3</strong></td>
+            <td>Développement d'un bot Telegram (90+ modules), scripts d'automatisation, pipelines de données, agents IA</td>
+            <td><span class="tag tag-green">Opérationnel</span></td>
+          </tr>
+          <tr>
+            <td><strong>JavaScript / Node.js</strong></td>
+            <td>Extensions Chrome, serveurs locaux, interfaces web interactives, Service Workers (PWA)</td>
+            <td><span class="tag tag-green">Opérationnel</span></td>
+          </tr>
+          <tr>
+            <td><strong>HTML5 / CSS3</strong></td>
+            <td>75+ pages portfolio, landing pages clients, interfaces d'applications, design responsive</td>
+            <td><span class="tag tag-green">Opérationnel</span></td>
+          </tr>
+          <tr>
+            <td><strong>Three.js (WebGL)</strong></td>
+            <td>Visualisations 3D interactives, scènes spatiales, modèles 3D animés (40+ assets)</td>
+            <td><span class="tag tag-green">Opérationnel</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Intelligence Artificielle & Outils IA</h3>
+      <table>
+        <thead>
+          <tr><th>Outil / Plateforme</th><th>Formation & Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Claude (Anthropic)</strong></td>
+            <td>Maîtrise avancée du prompting, ingénierie de systèmes multi-agents, API Claude, Claude Code (IDE IA)</td>
+          </tr>
+          <tr>
+            <td><strong>Groq</strong></td>
+            <td>Architecture de cascade IA 6 modèles (Llama 3.3, Maverick, Scout, Kimi K2, Qwen3, Llama 3.1) pour optimisation coût/performance</td>
+          </tr>
+          <tr>
+            <td><strong>Google Gemini</strong></td>
+            <td>Utilisation en fallback IA, intégration API pour diversification des sources d'intelligence</td>
+          </tr>
+          <tr>
+            <td><strong>OpenAI (GPT)</strong></td>
+            <td>Intégration dans les workflows clients (n8n), génération de contenu automatisée</td>
+          </tr>
+          <tr>
+            <td><strong>ElevenLabs</strong></td>
+            <td>Synthèse vocale IA, intégration dans applications web et bot Telegram</td>
+          </tr>
+          <tr>
+            <td><strong>KLING AI</strong></td>
+            <td>Génération vidéo IA (cinématiques, démos produit, contenus marketing)</td>
+          </tr>
+          <tr>
+            <td><strong>Stable Diffusion</strong></td>
+            <td>Génération d'images IA en local, création d'assets visuels</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Automatisation & Infrastructure</h3>
+      <table>
+        <thead>
+          <tr><th>Outil</th><th>Maîtrise acquise</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>n8n</strong></td>
+            <td>Création de workflows d'automatisation complexes (scraping, agrégation de news, enrichissement de leads, envoi automatisé). Déployé en production pour plusieurs clients</td>
+          </tr>
+          <tr>
+            <td><strong>Docker</strong></td>
+            <td>Conteneurisation d'applications, déploiement automatisé via Dockerfile</td>
+          </tr>
+          <tr>
+            <td><strong>Railway / Render / Vercel</strong></td>
+            <td>Hébergement cloud, CI/CD automatique via GitHub, déploiement continu</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub / Git</strong></td>
+            <td>Versioning de code, collaboration, GitHub Pages pour hébergement statique</td>
+          </tr>
+          <tr>
+            <td><strong>Supabase (PostgreSQL)</strong></td>
+            <td>Base de données, authentification JWT, stockage fichiers, fonctions Edge</td>
+          </tr>
+          <tr>
+            <td><strong>API Telegram</strong></td>
+            <td>Développement d'un bot complet (90+ modules) en Python asynchrone</td>
+          </tr>
+          <tr>
+            <td><strong>Chrome Extension API (MV3)</strong></td>
+            <td>Développement d'extension navigateur pour monitoring de plateforme freelance</td>
+          </tr>
+          <tr>
+            <td><strong>Blender (via MCP)</strong></td>
+            <td>Génération automatisée de modèles 3D via protocole serveur</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Compétences transverses développées</h3>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:0.9rem; margin-bottom:8px; color:var(--accent);">Gestion de projet</h4>
+          <ul>
+            <li>Architecture logicielle multi-agents</li>
+            <li>Gestion de backlog et sprints</li>
+            <li>Documentation technique structurée</li>
+            <li>Audit qualité et gouvernance IA</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:0.9rem; margin-bottom:8px; color:var(--accent);">Business & Commercial</h4>
+          <ul>
+            <li>Rédaction de propositions commerciales</li>
+            <li>Prospection internationale (Upwork)</li>
+            <li>Création de landing pages de vente</li>
+            <li>Stratégie de pricing multi-niveaux</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. APPLICATIONS -->
+  <section class="section" id="applications">
+    <h2 class="section-title"><span class="num">3</span> 10 Applications professionnelles développées</h2>
+    <p class="section-desc">Chaque application est fonctionnelle, déployée ou déployable, et démontre une compétence technique concrète.</p>
+
+    <!-- App 1 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #1F6FFF, #7A3CFF);">🤖</div>
+      <div class="app-info">
+        <h4>1. SLY Bot — Assistant IA Telegram</h4>
+        <p>Bot conversationnel intelligent déployé en production sur Railway. <strong>90+ modules</strong> couvrant : raisonnement IA (brain, réflexion, pensée étendue), gestion de tâches, calendrier, finance, actualités, productivité, création de contenu, fitness, et plus. Architecture <strong>Python asynchrone</strong> avec cascade de 6 modèles IA (Groq) + fallback Gemini pour optimiser coût et performance.</p>
+        <p><strong>Dimension professionnelle :</strong> Démontre la capacité à concevoir, développer et déployer un produit SaaS complet avec architecture micro-services, gestion de mémoire persistante, et intégration multi-API.</p>
+        <div class="app-tech">
+          <span class="tag">Python 3</span>
+          <span class="tag">Async/Await</span>
+          <span class="tag">Telegram API</span>
+          <span class="tag">Groq API</span>
+          <span class="tag">Gemini API</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Railway</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 2 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #10B981, #059669);">🌐</div>
+      <div class="app-info">
+        <h4>2. Cooper Building — Tableau de bord multi-agents 3D</h4>
+        <p>Interface de gestion visuelle pour <strong>65 agents IA</strong> autonomes, présentée sous forme de station orbitale en 3D. Navigation par étages, panneaux agents temps réel, overlay HUD, compteur de performance. Chaque agent possède sa spécialité et son rôle dans l'organisation.</p>
+        <p><strong>Dimension professionnelle :</strong> Showcases la maîtrise de la visualisation 3D (Three.js/WebGL), de l'architecture multi-agents, et de la conception d'interfaces complexes de monitoring.</p>
+        <div class="app-tech">
+          <span class="tag">Three.js</span>
+          <span class="tag">WebGL</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Architecture multi-agents</span>
+          <span class="tag">3D Rendering</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 3 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">📰</div>
+      <div class="app-info">
+        <h4>3. Sly Revue — Journal IA automatisé</h4>
+        <p>Publication numérique de <strong>32 articles</strong> générés et structurés par IA, organisés en 5 cercles thématiques. Design éditorial professionnel (thème parchemin blanc/bordeaux), synthèse vocale via ElevenLabs, système d'onglets, barre de progression au scroll, quiz interactif et radar d'opportunités.</p>
+        <p><strong>Dimension professionnelle :</strong> Démontre la capacité à produire du contenu éditorial de qualité à grande échelle avec l'IA, compétence directement monnayable pour les agences de contenu et médias.</p>
+        <div class="app-tech">
+          <span class="tag">HTML5/CSS3</span>
+          <span class="tag">Scroll-driven animations</span>
+          <span class="tag">ElevenLabs</span>
+          <span class="tag">Content Generation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 4 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #7A3CFF, #5B21B6);">🌌</div>
+      <div class="app-info">
+        <h4>4. Sly Galaxy Hub — Portail 3D interactif</h4>
+        <p>Point d'entrée cinématique vers l'écosystème d'applications. Champ d'étoiles Three.js en temps réel, animation de logo séquencée, feux d'artifice canvas, effet de traînée curseur, intro cinématique de 6 secondes. Relie <strong>7 applications</strong> interconnectées via des cartes de navigation animées.</p>
+        <p><strong>Dimension professionnelle :</strong> Vitrine technique de haut niveau en WebGL et animation web, applicable à tout site corporate ou expérience interactive pour des clients premium.</p>
+        <div class="app-tech">
+          <span class="tag">Three.js</span>
+          <span class="tag">Canvas 2D</span>
+          <span class="tag">WebGL</span>
+          <span class="tag">Animations CSS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 5 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EF4444, #DC2626);">💬</div>
+      <div class="app-info">
+        <h4>5. Sly-Chat — Interface de conversation IA</h4>
+        <p>Application de chat en temps réel avec intégration IA (Groq/Claude), synthèse vocale, avatars 3D animés (format GLB). Animations pulse vocales, écran d'accueil avec champ d'étoiles, configuration PWA (Progressive Web App) avec Service Worker pour usage hors-ligne.</p>
+        <p><strong>Dimension professionnelle :</strong> Produit SaaS complet démontrant la maîtrise des technologies temps réel, du rendu 3D dans le navigateur, et de l'architecture PWA — directement applicable pour des chatbots d'entreprise.</p>
+        <div class="app-tech">
+          <span class="tag">Three.js</span>
+          <span class="tag">Service Worker</span>
+          <span class="tag">PWA</span>
+          <span class="tag">WebGL</span>
+          <span class="tag">Groq API</span>
+          <span class="tag">ElevenLabs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 6 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #06B6D4, #0891B2);">🔍</div>
+      <div class="app-info">
+        <h4>6. UpEarth — Extension Chrome de monitoring Upwork</h4>
+        <p>Extension navigateur (Manifest V3) pour le suivi en temps réel des offres d'emploi sur Upwork. Dashboard avec KPIs (taux de vue, taux de réponse, taux d'embauche), système de notifications Windows, <strong>génération automatique de lettres de motivation par Claude</strong>, intégration vocale ElevenLabs, analyse des meilleures heures de candidature par fuseau horaire.</p>
+        <p><strong>Dimension professionnelle :</strong> Outil de productivité commerciale concret qui automatise la veille et optimise le taux de conversion des candidatures freelance.</p>
+        <div class="app-tech">
+          <span class="tag">Chrome Extension MV3</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">ElevenLabs</span>
+          <span class="tag">localStorage</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 7 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #FFD700, #F59E0B);">🏛️</div>
+      <div class="app-info">
+        <h4>7. Sly Empire — Portail corporate</h4>
+        <p>Page de présentation institutionnelle de l'activité avec mise en avant des 65 agents IA, des 8 pôles de compétence (Technique, Données, Croissance, Business, Création, Opérations, Connaissance, Vente), et de l'ensemble des services proposés. Design premium blanc et doré.</p>
+        <p><strong>Dimension professionnelle :</strong> Capacité à concevoir un site vitrine corporate professionnel, avec architecture d'information claire et design premium — compétence immédiatement monnayable.</p>
+        <div class="app-tech">
+          <span class="tag">HTML5/CSS3</span>
+          <span class="tag">Responsive Design</span>
+          <span class="tag">UI/UX Design</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 8 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #1EFF8E, #10B981);">📊</div>
+      <div class="app-info">
+        <h4>8. MySly — Dashboard de gestion d'entreprise</h4>
+        <p>Tableau de bord personnel centralisant l'ensemble des opérations : statut des agents IA, indicateurs de performance, flux d'actualités, gestion des médias. Interface avec sidebar 275px, indicateurs temps réel par agent, intégration vidéo de fond (KLING AI).</p>
+        <p><strong>Dimension professionnelle :</strong> Conception d'un outil de pilotage d'activité, compétence transférable pour la création de dashboards métier pour des clients PME.</p>
+        <div class="app-tech">
+          <span class="tag">JavaScript</span>
+          <span class="tag">Dashboard UI</span>
+          <span class="tag">Responsive</span>
+          <span class="tag">KLING AI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 9 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">🔄</div>
+      <div class="app-info">
+        <h4>9. Système de mémoire CoALA — Architecture cognitive IA</h4>
+        <p>Système de mémoire à 4 couches pour les agents IA : mémoire de travail (session), mémoire épisodique (sessions passées), mémoire sémantique (faits persistants via Knowledge Graph), mémoire procédurale (compétences codifiées en JSON). Inclut recherche sémantique, rotation automatique de mémoire, et système d'apprentissage auto-génératif.</p>
+        <p><strong>Dimension professionnelle :</strong> Architecture d'IA avancée démontrant une compréhension profonde des systèmes cognitifs artificiels — positionnement expert sur le marché.</p>
+        <div class="app-tech">
+          <span class="tag">Python</span>
+          <span class="tag">CoALA Architecture</span>
+          <span class="tag">Knowledge Graph</span>
+          <span class="tag">Semantic Search</span>
+          <span class="tag">JSON</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App 10 -->
+    <div class="app-card">
+      <div class="app-icon" style="background: linear-gradient(135deg, #EC4899, #DB2777);">📦</div>
+      <div class="app-info">
+        <h4>10. Pipeline de production de contenu digital</h4>
+        <p>Système complet de création et distribution de produits numériques : <strong>livres KDP</strong> (5 manuscrits en préparation dans les niches bien-être, productivité, IA), <strong>templates Gumroad</strong> (workflows n8n prêts à vendre), <strong>templates Etsy</strong> (planners, trackers, wall art IA). Inclut convertisseur Markdown→EPUB, scripts de publication automatisée, et templates de contenu réutilisables.</p>
+        <p><strong>Dimension professionnelle :</strong> Capacité à créer une chaîne de production de produits numériques à revenu passif, de la création à la distribution sur 3 marketplaces.</p>
+        <div class="app-tech">
+          <span class="tag">Python</span>
+          <span class="tag">KDP (Amazon)</span>
+          <span class="tag">Gumroad</span>
+          <span class="tag">Etsy</span>
+          <span class="tag">EPUB</span>
+          <span class="tag">Markdown</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-highlight" style="margin-top: 24px;">
+      <h3>Récapitulatif technique global</h3>
+      <p>Au total, ce travail représente :</p>
+      <ul>
+        <li><strong>350 000+ lignes de code</strong> écrites et maintenues</li>
+        <li><strong>75+ pages web</strong> (portfolios, landing pages, propositions commerciales, recherches)</li>
+        <li><strong>90+ modules Python</strong> pour le bot Telegram</li>
+        <li><strong>65 agents IA</strong> avec personnalités, spécialités et voix distinctes</li>
+        <li><strong>4 workflows n8n</strong> en production</li>
+        <li><strong>100+ fichiers de documentation</strong> (directives, processus, gouvernance)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. CLIENTS -->
+  <section class="section" id="clients">
+    <h2 class="section-title"><span class="num">4</span> Clients & Missions réalisées</h2>
+    <p class="section-desc">Depuis le lancement de l'activité, 9 clients ont été accompagnés sur des missions variées.</p>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Client</th><th>Pays</th><th>Mission</th><th>Livrables</th><th>Statut</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lurie (Yuri)</strong></td>
+            <td>Moldavie</td>
+            <td>Automatisation de news</td>
+            <td>Workflow n8n complet : scraping, résumé IA, publication automatique (7 articles/jour) sur site d'actualités (9a.md)</td>
+            <td><span class="tag tag-green">En production</span></td>
+          </tr>
+          <tr>
+            <td><strong>Nikola Stojanovic (Clarius One)</strong></td>
+            <td>USA</td>
+            <td>Plateforme SaaS — Hub Client</td>
+            <td>Application React + TypeScript + Supabase : auth, chat, checkout Stripe, formulaires, admin, abonnements (4 tiers), factures PDF, déploiement Vercel — 4 phases livrées</td>
+            <td><span class="tag tag-green">Livré (Phases 1-4)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Noé</strong></td>
+            <td>Afrique (CI, CM, SN)</td>
+            <td>SaaS comptabilité PME (H-Compta AI)</td>
+            <td>Migration complète Airtable→Supabase PostgreSQL (8 tables), Dropbox→Supabase Storage, Auth JWT, 8 scénarios Make.com, 4 apps HTML, déploiement Netlify, 22 prompts IA intégrés</td>
+            <td><span class="tag tag-orange">Livraison prête</span></td>
+          </tr>
+          <tr>
+            <td><strong>Kiran (PropXcel)</strong></td>
+            <td>Australie</td>
+            <td>Funnel immobilier</td>
+            <td>Landing page + QR code (PNG/SVG), webhook n8n, intégration Google Sheets, templates WhatsApp Business API</td>
+            <td><span class="tag tag-green">M1-M2 livrés</span></td>
+          </tr>
+          <tr>
+            <td><strong>Brandy Hertel (Hertel's Coins)</strong></td>
+            <td>USA</td>
+            <td>Automatisation logistique</td>
+            <td>Moteur de calcul poids/emballage, intégration ShipStation, plan d'action technique complet</td>
+            <td><span class="tag tag-purple">Plan livré</span></td>
+          </tr>
+          <tr>
+            <td><strong>Didier Carrette</strong></td>
+            <td>France (Lyon)</td>
+            <td>Site vitrine + Génération de leads</td>
+            <td>Site artisan menuisier (GitHub Pages), script de génération de 300 leads B2C</td>
+            <td><span class="tag tag-purple">Livré</span></td>
+          </tr>
+          <tr>
+            <td><strong>Widad (PuntaTalon Academy)</strong></td>
+            <td>France (Toulouse)</td>
+            <td>Automatisation email marketing</td>
+            <td>Architecture de 39 emails Mailchimp : 25 séquences automatiques + 14 campagnes, 5 parcours client</td>
+            <td><span class="tag tag-purple">Conçu</span></td>
+          </tr>
+          <tr>
+            <td><strong>Giovani Dent</strong></td>
+            <td>Moldavie</td>
+            <td>Système de vente téléphonique</td>
+            <td>CRM de gestion des leads, planification d'appels, système de relance automatisée pour clinique dentaire</td>
+            <td><span class="tag tag-orange">En cours</span></td>
+          </tr>
+          <tr>
+            <td><strong>Diaz / Forti</strong></td>
+            <td>—</td>
+            <td>Propositions commerciales</td>
+            <td>Argumentaires de vente, propositions HTML personnalisées</td>
+            <td><span class="tag tag-purple">Prospect</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Diversité des missions</h3>
+      <p>Ces missions couvrent un spectre large de prestations :</p>
+      <div class="grid-3" style="margin-top: 12px;">
+        <div style="text-align:center; padding:16px; background:var(--highlight); border-radius:8px;">
+          <div style="font-size:1.5rem; font-weight:700; color:var(--accent);">4</div>
+          <div style="font-size:0.8rem; color:var(--text-secondary);">Pays différents</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:var(--highlight); border-radius:8px;">
+          <div style="font-size:1.5rem; font-weight:700; color:var(--accent);">6</div>
+          <div style="font-size:0.8rem; color:var(--text-secondary);">Types de missions</div>
+        </div>
+        <div style="text-align:center; padding:16px; background:var(--highlight); border-radius:8px;">
+          <div style="font-size:1.5rem; font-weight:700; color:var(--accent);">3</div>
+          <div style="font-size:0.8rem; color:var(--text-secondary);">Langues de travail</div>
+        </div>
+      </div>
+      <p style="margin-top:12px;">Types : automatisation de workflows, développement SaaS, création de sites, génération de leads, CRM, email marketing. Clients en <strong>français, anglais et roumain</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 5. CRM -->
+  <section class="section" id="crm">
+    <h2 class="section-title"><span class="num">5</span> CRM & Systèmes d'automatisation créés</h2>
+    <p class="section-desc">Systèmes conçus et déployés pour la gestion de la relation client et l'automatisation des processus.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>CRM interne (fichier structuré)</h3>
+        <p>Système de suivi client complet avec pour chaque client :</p>
+        <ul>
+          <li>Fiche projet (PROJECT.md) : scope, livrables, jalons</li>
+          <li>Profil client (PERSONA.md) : psychologie, style de communication, attentes</li>
+          <li>Historique de communication (dates, contenus, décisions)</li>
+          <li>Évaluation des risques (scoring DREYFUS)</li>
+          <li>Évolution de la relation (score dans le temps)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Workflows n8n en production</h3>
+        <p>Automatisations déployées et fonctionnelles :</p>
+        <ul>
+          <li><strong>Pipeline News Lurie :</strong> scraping → résumé IA → publication 7 articles/jour</li>
+          <li><strong>Pipeline Leads Cliniques :</strong> Apollo Search → enrichissement → Google Sheets → SMS OpenPhone</li>
+          <li><strong>Pipeline Leads Mobilier :</strong> même architecture, secteur ameublement</li>
+          <li><strong>Funnel PropXcel :</strong> QR → webhook → Google Sheets → WhatsApp</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Système de routing intelligent (Agent Router)</h3>
+        <p>Algorithme Python de dispatch automatique qui analyse les mots-clés d'une demande pour router vers les agents IA les plus pertinents. Utilisé pour l'allocation automatique des ressources sur chaque tâche.</p>
+      </div>
+
+      <div class="card">
+        <h3>Pipeline de génération de leads</h3>
+        <p>Système B2B structuré : découverte → extraction (LinkedIn, Google) → enrichissement (Hunter.io, Clearbit) → scoring → validation. Objectif : 50-100 leads qualifiés par semaine à coût zéro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. UPWORK -->
+  <section class="section" id="upwork">
+    <h2 class="section-title"><span class="num">6</span> Prospection sur Upwork</h2>
+    <p class="section-desc">Activité de prospection commerciale structurée et outillée sur la plateforme de freelance Upwork.</p>
+
+    <div class="card card-highlight">
+      <h3>Approche de prospection</h3>
+      <p>Chaque candidature suit une <strong>méthodologie rigoureuse</strong> appelée « Méthode Alex » :</p>
+      <ol style="padding-left: 20px; margin-top: 8px;">
+        <li><strong>Espionnage client</strong> — Analyse du profil, de l'historique et du budget du client (6 points d'analyse)</li>
+        <li><strong>Analyse de l'offre</strong> — Identification des besoins explicites et implicites</li>
+        <li><strong>Rédaction ciblée</strong> — Lettre de motivation personnalisée avec accroche liée au contexte du client</li>
+        <li><strong>Scoring qualité</strong> — Validation par audit interne (score minimum 8/10 requis avant envoi)</li>
+        <li><strong>Suivi</strong> — Tracking des résultats (vue, réponse, embauche) via UpEarth</li>
+      </ol>
+      <p style="margin-top: 12px;"><strong>Taux de conversion documenté : 68%</strong> sur les candidatures envoyées avec cette méthode (vs. 2-5% en moyenne sur Upwork).</p>
+    </div>
+
+    <div class="card">
+      <h3>Infrastructure de prospection</h3>
+      <ul>
+        <li><strong>UpEarth (extension Chrome)</strong> : monitoring temps réel des offres, notifications, KPIs, génération automatique de lettres par IA</li>
+        <li><strong>Dashboard analytique</strong> : taux de vue, taux de réponse, taux d'embauche, analyse par mots-clés</li>
+        <li><strong>Analyse des créneaux optimaux</strong> : algorithme de scoring par fuseau horaire (France → USA/UK) pour maximiser la visibilité</li>
+        <li><strong>Templates de cover letter</strong> : bibliothèque de templates par secteur (automatisation, SaaS, lead gen, CRM)</li>
+        <li><strong>Double profil</strong> : Profil A (technique) + Profil B (commercial) pour couvrir plus de segments</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Segments ciblés</h3>
+      <div class="grid-3">
+        <div style="padding:12px; background:var(--highlight); border-radius:8px; text-align:center;">
+          <strong style="font-size:0.85rem;">Automatisation IA</strong>
+          <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:4px;">+109% YoY sur Upwork</p>
+        </div>
+        <div style="padding:12px; background:var(--highlight); border-radius:8px; text-align:center;">
+          <strong style="font-size:0.85rem;">Intégration IA</strong>
+          <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:4px;">+178% YoY sur Upwork</p>
+        </div>
+        <div style="padding:12px; background:var(--highlight); border-radius:8px; text-align:center;">
+          <strong style="font-size:0.85rem;">n8n / Workflow</strong>
+          <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:4px;">105 offres actives, 50-150$/h</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BUSINESS PLAN -->
+  <section class="section" id="business-plan">
+    <h2 class="section-title"><span class="num">7</span> Business Plan</h2>
+    <p class="section-desc">Plan de développement structuré autour de la stratégie « Mille Ruisseaux » — revenus diversifiés et complémentaires.</p>
+
+    <div class="card card-highlight">
+      <h3>Positionnement</h3>
+      <p><strong>Prestataire de services en Intelligence Artificielle et Automatisation</strong>, spécialisé dans l'accompagnement des PME, artisans et indépendants dans leur transformation numérique.</p>
+      <br>
+      <p><strong>Proposition de valeur unique :</strong> Un profil hybride commercial + technique, capable de comprendre les besoins métier d'un client ET de concevoir et déployer les solutions IA adaptées, le tout avec un écosystème de 65 agents IA spécialisés.</p>
+    </div>
+
+    <div class="card">
+      <h3>Offre de services (3 niveaux de prix)</h3>
+      <table>
+        <thead>
+          <tr><th>Offre</th><th>Description</th><th>Cible</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Essentiel</strong></td>
+            <td>1 automatisation IA (workflow n8n, chatbot, ou pipeline de contenu)</td>
+            <td>TPE, indépendants, artisans</td>
+          </tr>
+          <tr>
+            <td><strong>Standard</strong></td>
+            <td>3 automatisations + intégration CRM + formation client</td>
+            <td>PME, agences, consultants</td>
+          </tr>
+          <tr>
+            <td><strong>Premium</strong></td>
+            <td>5 automatisations + dashboard personnalisé + support continu + agents IA dédiés</td>
+            <td>PME structurées, scale-ups</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>5 flux de revenus planifiés</h3>
+      <div style="margin-top: 8px;">
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--border);">
+          <span style="background:var(--accent); color:white; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; flex-shrink:0;">1</span>
+          <div>
+            <strong>Prestations de services IA (Upwork + direct)</strong>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">Missions clients sur-mesure : automatisations, développement SaaS, intégrations IA, création de workflows</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--border);">
+          <span style="background:var(--accent); color:white; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; flex-shrink:0;">2</span>
+          <div>
+            <strong>Produits numériques (KDP Amazon)</strong>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">E-books dans les niches bien-être, productivité et IA — 5 manuscrits en préparation, revenus passifs via royalties Amazon (70%)</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--border);">
+          <span style="background:var(--accent); color:white; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; flex-shrink:0;">3</span>
+          <div>
+            <strong>Templates et workflows prêts à l'emploi (Gumroad)</strong>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">5 templates d'automatisation n8n vendus en téléchargement instantané : prospection LinkedIn, machine à contenu, veille concurrentielle, support client IA, usine à livres</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--border);">
+          <span style="background:var(--accent); color:white; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; flex-shrink:0;">4</span>
+          <div>
+            <strong>Contenu multi-plateforme & affiliation</strong>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">Distribution de contenu sur 7 plateformes (Medium, Quora, Pinterest, Reddit, LinkedIn, YouTube, TikTok) + newsletter avec programmes d'affiliation</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 0;">
+          <span style="background:var(--accent); color:white; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; flex-shrink:0;">5</span>
+          <div>
+            <strong>Templates Etsy (produits imprimables)</strong>
+            <p style="font-size:0.85rem; color:var(--text-secondary);">Planners, trackers, wall art générés par IA — vente automatique sur Etsy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Avantage concurrentiel : coût de fonctionnement quasi nul</h3>
+      <p>L'ensemble de l'infrastructure repose sur des outils gratuits ou à très faible coût :</p>
+      <table style="margin-top: 12px;">
+        <thead>
+          <tr><th>Poste</th><th>Outil</th><th>Coût</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>IA générative</td><td>Claude (abonnement existant) + Groq (gratuit, 600K tokens/jour) + Gemini (gratuit)</td><td>~0€ marginal</td></tr>
+          <tr><td>Automatisation</td><td>n8n (auto-hébergé sur Railway, tier gratuit)</td><td>0€</td></tr>
+          <tr><td>Hébergement</td><td>Railway + Render + Vercel + GitHub Pages (tiers gratuits)</td><td>0€</td></tr>
+          <tr><td>Base de données</td><td>Supabase (500Mo gratuits)</td><td>0€</td></tr>
+          <tr><td>Communication</td><td>Telegram (gratuit) + Email</td><td>0€</td></tr>
+          <tr><td>Marketplace</td><td>KDP, Gumroad, Etsy (commission à la vente uniquement)</td><td>0€ fixe</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 12px; font-weight: 600;">Coût de fonctionnement mensuel fixe : quasi nul. Pas de local, pas de stock, pas d'employé. 100% digital.</p>
+    </div>
+
+    <div class="card">
+      <h3>Marché cible</h3>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:0.9rem; margin-bottom:8px; color:var(--accent);">Clients directs</h4>
+          <ul>
+            <li>PME et TPE en transformation digitale</li>
+            <li>Artisans et commerçants (sites + leads)</li>
+            <li>Agences marketing (automatisation)</li>
+            <li>Startups (MVP, intégrations IA)</li>
+            <li>Consultants et coachs (CRM, funnels)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:0.9rem; margin-bottom:8px; color:var(--accent);">Clients Upwork (international)</h4>
+          <ul>
+            <li>USA, Canada, UK, Australie</li>
+            <li>Europe (Moldavie, France, Allemagne)</li>
+            <li>Afrique francophone</li>
+            <li>Secteurs : immobilier, santé, e-commerce, SaaS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. RYTHME -->
+  <section class="section" id="rythme">
+    <h2 class="section-title"><span class="num">8</span> Rythme de travail</h2>
+    <p class="section-desc">Un investissement quotidien intensif et structuré.</p>
+
+    <div class="card card-highlight">
+      <h3>10 à 12 heures de travail par jour</h3>
+      <p>Depuis le début de ce projet de création d'entreprise, je travaille en moyenne <strong>10 à 12 heures par jour</strong>, 7 jours sur 7, réparties comme suit :</p>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr><th>Bloc horaire</th><th>Activité</th><th>Durée</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Matin (8h-12h)</strong></td>
+            <td>Développement technique : code, intégrations API, tests, déploiement</td>
+            <td>4h</td>
+          </tr>
+          <tr>
+            <td><strong>Après-midi (13h-18h)</strong></td>
+            <td>Missions clients : livrables, communication, workflows n8n, debugging</td>
+            <td>5h</td>
+          </tr>
+          <tr>
+            <td><strong>Soir (20h-22h)</strong></td>
+            <td>Formation continue : nouvelles technos IA, veille, recherche de marché, rédaction</td>
+            <td>2h</td>
+          </tr>
+          <tr>
+            <td><strong>Ponctuel</strong></td>
+            <td>Prospection Upwork, rédaction de propositions, réponses clients</td>
+            <td>1-2h</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Preuves d'activité traçables</h3>
+      <ul>
+        <li><strong>Historique Git (GitHub)</strong> : commits quotidiens documentant chaque modification de code</li>
+        <li><strong>Recaps de session automatiques</strong> : résumé structuré de chaque journée de travail (12+ fichiers de mars 2026)</li>
+        <li><strong>Logs d'activité</strong> : heartbeat quotidien, audit matinal, briefs du soir</li>
+        <li><strong>Historique Upwork</strong> : candidatures envoyées, échanges avec les clients, contrats signés</li>
+        <li><strong>Fichiers de suivi projet</strong> : 100+ fichiers de documentation technique et opérationnelle</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9. VISION -->
+  <section class="section" id="vision">
+    <h2 class="section-title"><span class="num">9</span> Vision & Objectifs</h2>
+    <p class="section-desc">Cap à 6 mois et au-delà.</p>
+
+    <div class="card">
+      <h3>Feuille de route</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Mois 1-2 (Avril-Mai 2026)</div>
+          <div class="timeline-content">
+            Lancement des produits numériques (KDP + Gumroad). Publication des premiers e-books et templates. Poursuite des missions Upwork. Création du statut juridique (micro-entreprise ou SASU).
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Mois 3-4 (Juin-Juillet 2026)</div>
+          <div class="timeline-content">
+            Montée en charge des missions clients. Lancement de la distribution de contenu multi-plateforme. Premières ventes de templates. Construction de la base newsletter (objectif : 500 abonnés).
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Mois 5-6 (Août-Septembre 2026)</div>
+          <div class="timeline-content">
+            Stabilisation de 3-4 clients récurrents. 3ème livre KDP publié. Optimisation des flux de revenus passifs. Objectif : 2 000+ abonnés newsletter. Premiers revenus d'affiliation significatifs.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Mois 7-12 (Octobre 2026 – Mars 2027)</div>
+          <div class="timeline-content">
+            Passage à l'échelle : embauche potentielle d'un collaborateur, diversification des segments clients, développement d'un produit SaaS propriétaire basé sur le système multi-agents.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Objectifs chiffrés à 12 mois</h3>
+      <div class="grid-2">
+        <div style="padding:20px; background:var(--highlight); border-radius:8px;">
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-secondary); margin-bottom:4px;">Clients actifs</p>
+          <p style="font-size:1.8rem; font-weight:800; color:var(--accent);">8-12</p>
+          <p style="font-size:0.8rem; color:var(--text-secondary);">missions récurrentes ou ponctuelles</p>
+        </div>
+        <div style="padding:20px; background:var(--highlight); border-radius:8px;">
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-secondary); margin-bottom:4px;">Produits numériques</p>
+          <p style="font-size:1.8rem; font-weight:800; color:var(--accent);">10+</p>
+          <p style="font-size:0.8rem; color:var(--text-secondary);">livres + templates en vente</p>
+        </div>
+        <div style="padding:20px; background:var(--highlight); border-radius:8px;">
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-secondary); margin-bottom:4px;">Audience newsletter</p>
+          <p style="font-size:1.8rem; font-weight:800; color:var(--accent);">2 000+</p>
+          <p style="font-size:0.8rem; color:var(--text-secondary);">abonnés à la newsletter IA</p>
+        </div>
+        <div style="padding:20px; background:var(--highlight); border-radius:8px;">
+          <p style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-secondary); margin-bottom:4px;">Présence en ligne</p>
+          <p style="font-size:1.8rem; font-weight:800; color:var(--accent);">7</p>
+          <p style="font-size:0.8rem; color:var(--text-secondary);">plateformes de distribution actives</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      « Mon objectif n'est pas de devenir développeur. C'est de bâtir une entreprise de services IA où la technologie travaille pour moi et mes clients. Mon profil commercial me permet de vendre ce que je construis. Mon apprentissage technique me permet de construire ce que je vends. Les deux se renforcent mutuellement. »
+    </div>
+  </section>
+
+  <!-- ANNEXE -->
+  <section class="section">
+    <h2 class="section-title"><span class="num">A</span> Annexe — Stack technique complète</h2>
+
+    <div class="card">
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:0.85rem; color:var(--accent); margin-bottom:8px;">Intelligence Artificielle</h4>
+          <ul style="font-size:0.85rem;">
+            <li>Claude (Anthropic) — raisonnement principal</li>
+            <li>Groq — cascade 6 modèles (gratuit)</li>
+            <li>Google Gemini — fallback</li>
+            <li>OpenAI GPT — intégrations clients</li>
+            <li>ElevenLabs — synthèse vocale</li>
+            <li>KLING AI — génération vidéo</li>
+            <li>Stable Diffusion — génération images</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:0.85rem; color:var(--accent); margin-bottom:8px;">Développement</h4>
+          <ul style="font-size:0.85rem;">
+            <li>Python 3 (async, agents, scripts)</li>
+            <li>JavaScript / Node.js</li>
+            <li>HTML5 / CSS3 (responsive, animations)</li>
+            <li>Three.js / WebGL (3D)</li>
+            <li>Chrome Extension API (MV3)</li>
+            <li>Service Workers (PWA)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:0.85rem; color:var(--accent); margin-bottom:8px;">Infrastructure</h4>
+          <ul style="font-size:0.85rem;">
+            <li>n8n (automatisation workflows)</li>
+            <li>Docker (conteneurisation)</li>
+            <li>Railway / Render / Vercel (cloud)</li>
+            <li>GitHub + GitHub Pages</li>
+            <li>Supabase (PostgreSQL + Auth + Storage)</li>
+            <li>Telegram Bot API</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:0.85rem; color:var(--accent); margin-bottom:8px;">Business & Vente</h4>
+          <ul style="font-size:0.85rem;">
+            <li>Upwork (plateforme freelance)</li>
+            <li>Amazon KDP (édition numérique)</li>
+            <li>Gumroad (vente de templates)</li>
+            <li>Etsy (produits imprimables)</li>
+            <li>Stripe (paiements)</li>
+            <li>Mailchimp / Beehiiv (newsletters)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><strong>Augustin Diaz — Dossier de Création d'Entreprise</strong></p>
+  <p>Prestations de services en Intelligence Artificielle & Automatisation</p>
+  <p style="margin-top:12px; font-size:0.75rem; opacity:0.6;">Document préparé par Augustin Diaz — Mars 2026 — Destiné à France Travail dans le cadre d'un projet de création d'entreprise</p>
+</div>
+
+</body>
+</html>
